@@ -44,7 +44,7 @@ Author URI: http://www.deuced.net/
 
 == Screenshots ==
 
-See it in action: http://deuced.net/
+Available at the plugin page: http://deuced.net/wpress/minibb-news/ 
 
 == Frequently Asked Questions ==
 
