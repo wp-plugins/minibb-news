@@ -17,7 +17,7 @@ Have fun and keep blogging!
 
 == Version and Info ==
 
-Plugin Name: minibb news
+Plugin Name: Minibb News
 Plugin URI: http://deuced.net/wpress/minibb-news/ 
 Version: 1.5
 Author: ..::DeUCeD::..
