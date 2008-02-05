@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: MiniBB News
-Plugin URI: http://deuced.net/wpress/collapsible-comments/ 
+Plugin URI: http://deuced.net/wpress/minibb-news/
 Description: Displays last miniBB news at your sidebar
 Author: ..::DeUCeD::..
 Version: 1.5
