@@ -4,7 +4,7 @@ Plugin Name: MiniBB News
 Plugin URI: http://deuced.net/wpress/minibb-news/
 Description: Displays last miniBB news at your sidebar
 Author: ..::DeUCeD::..
-Version: 1.6
+Version: 1.7
 Author URI: http://deuced.net
 */
 /*
@@ -140,9 +140,10 @@ foreach($topics as $key=>$val){
 $topic_id=$key;
 foreach($val as $k=>$v) $$k=$v;
 // HACK: if postsort by latest reply link to latest message else link the topic
+$mini_pagelink = intval($posts_count / $viewmaxreplys);
 if ($post_sort==1)  {
-if(isset($mod_rewrite) and $mod_rewrite) $linkToTopic="{$main_url}/{$forum_id}_{$topic_id}_0.html#msg{$topic_last_post_id}";
-else $linkToTopic="{$main_url}/{$indexphp}action=vthread&amp;forum={$forum_id}&amp;topic={$topic_id}#msg{$topic_last_post_id}";
+if(isset($mod_rewrite) and $mod_rewrite) $linkToTopic="{$main_url}/{$forum_id}_{$topic_id}_{$mini_pagelink}.html#msg{$topic_last_post_id}";
+else $linkToTopic="{$main_url}/{$indexphp}action=vthread&amp;forum={$forum_id}&amp;topic={$topic_id}&amp;page={$mini_pagelink}#msg{$topic_last_post_id}";
 }
 else  {
 if(isset($mod_rewrite) and $mod_rewrite) $linkToTopic="{$main_url}/{$forum_id}_{$topic_id}_0.html";
