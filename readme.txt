@@ -2,7 +2,7 @@
 
 Tags: widget
 Requires at least: WP 2.2
-Tested up to: WP 2.3.3
+Tested up to: WP 2.5
 Stable tag: trunk
 Contributors: DeUCeD
 Donate link: 
@@ -11,15 +11,15 @@ A widget that displays the latest discussions from your miniBB forums.
 
 == Description ==
 
-This plugin makes a widget to your sidebar and shows the latest discussions from your miniBB forums. You can configure the number of the latest discussions, the maximum number of words of each one to be displayed and the time difference from your server. More info can be found in it's page.
+This plugin makes a widget to your sidebar and shows the latest discussions from your miniBB forums. You can configure the number of the latest discussions, the maximum number of words of each one to be displayed and the time difference from your server. More info can be found in plugin's page.
 
 Have fun and keep blogging!
 
 == Version and Info ==
 
 Plugin Name: Minibb News
-Plugin URI: http://deuced.net/wpress/minibb-news/ 
-Version: 1.7
+Plugin URI: http://deuced.net/minibb-news/ 
+Version: 1.8
 Author: ..::DeUCeD::..
 Author URI: http://www.deuced.net/
 
@@ -44,15 +44,15 @@ Author URI: http://www.deuced.net/
 
 == Screenshots ==
 
-Available at the plugin page: http://deuced.net/wpress/minibb-news/ 
+Available at the plugin page: http://deuced.net/minibb-news/ 
 
 == Frequently Asked Questions ==
 
-Visit the plugin page: http://deuced.net/wpress/minibb-news/ 
+Visit the plugin page: http://deuced.net/minibb-news/ 
 
 == Changelog ==
 
-Visit the plugin page: http://deuced.net/wpress/minibb-news/  
+Visit the plugin page: http://deuced.net/minibb-news/  
 
 == Credits ==
 

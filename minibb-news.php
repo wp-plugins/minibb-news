@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: MiniBB News
-Plugin URI: http://deuced.net/wpress/minibb-news/
+Plugin URI: http://deuced.net/minibb-news/
 Description: Displays last miniBB news at your sidebar
 Author: ..::DeUCeD::..
-Version: 1.7
+Version: 1.8
 Author URI: http://deuced.net
 */
 /*
@@ -48,7 +48,7 @@ function widget_minibb_news_init() {
     $bb_timediff = $options['bb_timediff']; 
     $bb_path = $options['bb_path']; 
     if ($title=="") {
-			$title = "Forum Latest Topics";
+			$title = "Forum Activity";
     }
 //  if ($bb_forumsID=="") {
 //			$bb_forumsID = array();
@@ -91,6 +91,8 @@ $maxTxtLength = $bb_maxlength;
 $path = (ABSPATH . $bb_path);
 /* HACK: needed values comes now from WP widget control */
 define ('INCLUDED776',1);
+//Check for miniBB setup_options path&file --> WP2.5
+if (file_exists(($path . 'setup_options.php'))) {
 require_once ($path . 'setup_options.php');
 require_once ('./wp-content/plugins/minibb-news/minibb-func.php');
 if (count($displayForums)>0) {
@@ -165,6 +167,8 @@ echo '</li></ul>';
 //HACK: $limit condition: decreases by 1, then ending ::: A way to come around it
 $limit = ($limit - 1); }
 }
+// if MiniBB can't be located msg:
+} else { echo '<ul><li><font color="#CC0000"><strong>Cannot find MiniBB</strong></font></li></ul>'; }
 }
 // HACK ENDS: script was executed only if NOT IN a forum directory
 else { echo '<ul><li><strong>Enjoy the Forums!</strong></li></ul>'; }
@@ -196,31 +200,31 @@ else { echo '<ul><li><strong>Enjoy the Forums!</strong></li></ul>'; }
 		$bb_timediff = htmlspecialchars($options['bb_timediff'], ENT_QUOTES);
 	?>
 		<div style="text-align: left;"><label for="minibb_news-title">Give the widget a title (<em>optional</em>):</label>
-		<input style="width: 290px;" id="minibb_news-title" name="minibb_news-title" type="text" value="<?php echo $title; ?>" /></div>
+		<input style="width: 230px;" id="minibb_news-title" name="minibb_news-title" type="text" value="<?php echo $title; ?>" /></div>
 		<p></p>
-		<div style="text-align: left;"><label for="minibb_news-bb_path" >Write the directory where miniBB is installed (<em><strong>required</strong>, must be <strong>INSIDE</strong> your Wordpress installation <strong>WITH</strong> ending slash</em>), <br />example: <font color="#CC0000"><strong>forums/</strong></font></label>
-		<input style="width: 290px;" id="minibb_news-bb_path" name="minibb_news-bb_path" type="text" value="<?php echo $bb_path; ?>" /></div>
+		<div style="text-align: left;"><label for="minibb_news-bb_path" >Write the directory where miniBB is installed (<em><strong>required</strong>, must be <strong>INSIDE</strong> your Wordpress installation <strong>WITH</strong> ending slash</em>), example: <font color="#CC0000"><strong>forums/</strong></font></label>
+		<input style="width: 230px;" id="minibb_news-bb_path" name="minibb_news-bb_path" type="text" value="<?php echo $bb_path; ?>" /></div>
 		<p></p>
 <!--
 		<div style="text-align: left;"><label for="minibb_news-bb_forumsID">Display Forums ID separated with commas,<br /> example: <font color="#CC0000"><strong>3,8,9</strong></font> (<em>optional, blank means ALL</em>):</label>
-		<input style="width: 290px;" id="minibb_news-bb_forumsID" name="minibb_news-bb_forumsID" type="text" value="<?php // echo $bb_forumsID; ?>" /></div>
+		<input style="width: 230px;" id="minibb_news-bb_forumsID" name="minibb_news-bb_forumsID" type="text" value="<?php // echo $bb_forumsID; ?>" /></div>
 		<p></p>
 -->		
-		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_topiclimit">Number of topics to display in the sidebar (<em>optional</em>):</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_topiclimit" name="minibb_news-bb_topiclimit" type="text" value="<?php echo $bb_topiclimit; ?>" /></div></td></tr></table>
+		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_topiclimit">Number of topics to display <small>(<em>optional</em>)</small>:</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_topiclimit" name="minibb_news-bb_topiclimit" type="text" value="<?php echo $bb_topiclimit; ?>" /></div></td></tr></table>
 		<br />
-		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_maxlength">Number of maximum characters for each displayed topic (<em>optional</em>):</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_maxlength" name="minibb_news-bb_maxlength" type="text" value="<?php echo $bb_maxlength; ?>" /></div></td></tr></table>
+		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_maxlength">Maximum characters for each topic <small>(<em>optional</em>)</small>:</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_maxlength" name="minibb_news-bb_maxlength" type="text" value="<?php echo $bb_maxlength; ?>" /></div></td></tr></table>
 		<br />
-		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_sort">Set <font color="#CC0000"><strong>0</strong></font> to sort by latest topics OR set <font color="#CC0000"><strong>1</strong></font> to sort by latest replies (<em>optional</em>):</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_sort" name="minibb_news-bb_sort" type="text" value="<?php echo $bb_sort; ?>" /></div></td></tr>
+		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_sort">Set <font color="#CC0000"><strong>0</strong></font> to sort by latest topics OR set <font color="#CC0000"><strong>1</strong></font> to sort by latest replies <small>(<em>optional</em>)</small>:</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_sort" name="minibb_news-bb_sort" type="text" value="<?php echo $bb_sort; ?>" /></div></td></tr>
 		</table>
 		<br />
-		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_timediff">Time difference from your server in seconds, example: <font color="#CC0000"><strong>3600</strong></font> (<em>optional</em>):</label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_timediff" name="minibb_news-bb_timediff" type="text" value="<?php echo $bb_timediff; ?>" /></div></td></tr>
+		<table border="0"><tr><td width="230"><div style="text-align: left;"><label for="minibb_news-bb_timediff">Time difference from your server in seconds  <small>(<em>optional</em>)</small>, example: <font color="#CC0000"><strong>3600</strong></font></label></td><td><input style="width: 50px; text-align: right;" id="minibb_news-bb_timediff" name="minibb_news-bb_timediff" type="text" value="<?php echo $bb_timediff; ?>" /></div></td></tr>
 		</table>
 		<input type="hidden" id="minibb_news-submit" name="minibb_news-submit" value="1" />
 	<?php
 	}
 // Register Widgets
 	register_sidebar_widget('MiniBB News', 'widget_minibb_news');
-	register_widget_control('MiniBB News', 'widget_minibb_news_control', 300, 420);
+	register_widget_control('MiniBB News', 'widget_minibb_news_control', 240, 500);
 }
 // Load The minibb_news Widget
 add_action('plugins_loaded', 'widget_minibb_news_init');
