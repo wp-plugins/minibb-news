@@ -224,7 +224,7 @@ else { echo '<ul><li><strong>Enjoy the Forums!</strong></li></ul>'; }
 	}
 // Register Widgets
 	register_sidebar_widget('MiniBB News', 'widget_minibb_news');
-	register_widget_control('MiniBB News', 'widget_minibb_news_control', 240, 500);
+	register_widget_control('MiniBB News', 'widget_minibb_news_control', 240, 440);
 }
 // Load The minibb_news Widget
 add_action('plugins_loaded', 'widget_minibb_news_init');
