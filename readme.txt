@@ -19,7 +19,7 @@ Have fun and keep blogging!
 
 Plugin Name: Minibb News
 Plugin URI: http://deuced.net/minibb-news/ 
-Version: 1.8
+Version: 1.9
 Author: ..::DeUCeD::..
 Author URI: http://www.deuced.net/
 
@@ -40,7 +40,7 @@ Author URI: http://www.deuced.net/
 == Unistallation ==
 
 1. Deactivate the plugin through the *Plugins* menu in WordPress.
-3. Delete the folder minibb-news from your /wp-content/plugins/ directory.
+2. Delete the folder minibb-news from your /wp-content/plugins/ directory.
 
 == Screenshots ==
 
