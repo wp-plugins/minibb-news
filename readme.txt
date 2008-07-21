@@ -2,7 +2,7 @@
 
 Tags: widget
 Requires at least: WP 2.2
-Tested up to: WP 2.5
+Tested up to: WP 2.6
 Stable tag: trunk
 Contributors: DeUCeD
 Donate link: 
@@ -19,7 +19,7 @@ Have fun and keep blogging!
 
 Plugin Name: Minibb News
 Plugin URI: http://deuced.net/minibb-news/ 
-Version: 1.9
+Version: 2.0
 Author: ..::DeUCeD::..
 Author URI: http://www.deuced.net/
 

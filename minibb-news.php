@@ -4,7 +4,7 @@ Plugin Name: MiniBB News
 Plugin URI: http://deuced.net/minibb-news/
 Description: Displays last miniBB news at your sidebar
 Author: ..::DeUCeD::..
-Version: 1.9
+Version: 2.0
 Author URI: http://deuced.net
 */
 /*
@@ -28,9 +28,14 @@ A configurable widget that displays the latest discussions from your miniBB foru
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
+// Pre-2.6 compatibility
+if ( !defined('WP_CONTENT_URL') )
+  define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
+if ( !defined('WP_CONTENT_DIR') )
+  define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
 ### MiniBB News plugin
 if(function_exists('load_plugin_textdomain'))
-  load_plugin_textdomain('minibb news','wp-content/plugins/minibb-news');
+  load_plugin_textdomain('minibb news',WP_CONTENT_DIR . '/plugins/minibb-news');
 function widget_minibb_news_init() {
 // Check for the required API functions
 	if ( !function_exists('register_sidebar_widget') || !function_exists('register_widget_control') )
@@ -50,10 +55,10 @@ function widget_minibb_news_init() {
 if ($bb_title=='') { $bb_title = 'Forum Activity'; }
 //  if ($bb_forumsID=='') {	$bb_forumsID = array(); }
 if ($bb_topiclimit=='') {	$bb_topiclimit = 5; }
-if ($bb_sort=='') {	$bb_sort = 1; }
-if ($bb_maxlength=='') {	$bb_maxlength = 50; }
-if ($bb_timediff=='') {	$bb_timediff = 1; }
-if ($bb_path=='') {	$bb_path = 'forums/'; }
+if ($bb_sort=='')       {	$bb_sort = 1; }
+if ($bb_maxlength=='')  {	$bb_maxlength = 50; }
+if ($bb_timediff=='')   {	$bb_timediff = 1; }
+if ($bb_path=='')       {	$bb_path = 'forums/'; }
 // start the widget	& Display Title
 		echo $before_widget . $before_title . $bb_title . $after_title;
 // ********************************************************** //
@@ -81,7 +86,7 @@ define ('INCLUDED776',1);
 $setupexist = ($path . 'setup_options.php');
 if (file_exists($setupexist)) {
 require_once ($setupexist);
-require_once (ABSPATH . 'wp-content/plugins/minibb-news/minibb-func.php');
+require_once (WP_CONTENT_DIR . '/plugins/minibb-news/minibb-func.php');
 if (count($displayForums)>0) {
 $firstForum=$displayForums[0];
 $xtr=getClForums($displayForums,'where','','forum_id','or','=');
